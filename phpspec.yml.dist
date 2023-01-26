@@ -1,0 +1,4 @@
+suites:
+    main:
+        namespace: AltF4\SyliusPaycomBacPlugin
+        psr4_prefix: AltF4\SyliusPaycomBacPlugin

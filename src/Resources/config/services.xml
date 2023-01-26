@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <!-- Factory Builder -->
+        <service id="altf4.paycom_bac.payum.gateway_factory_builder" class="Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder">
+            <argument>AltF4\SyliusPaycomBacPlugin\Payum\SyliusPaycomBacGatewayFactory</argument>
+            <tag name="payum.gateway_factory_builder" factory="paycom_bac" />
+        </service>
+        
+        <!-- Configuration Form -->
+        <service id="AltF4\SyliusPaycomBacPlugin\Form\Type\SyliusPaycomBacConfigurationType">
+            <tag name="sylius.gateway_configuration_type" type="paycom_bac" label="altf4.paycom_bac.gateway_label" />
+            <tag name="form.type" />
+        </service>
+        
+        <!-- Capture Action -->
+        <service id="AltF4\SyliusPaycomBacPlugin\Payum\Action\CaptureUsingCreditCardAction" public="true">
+            <!--<argument type="service" id="sylius.http_client" />-->
+            <tag name="payum.action" factory="paycom_bac" alias="payum.action.capture" />
+        </service>
+        
+        <!-- AuthorizeAction-->
+        <service id="AltF4\SyliusPaycomBacPlugin\Payum\Action\AuthorizeAction" public="true">
+            <!--<argument type="service" id="sylius.http_client" />-->
+            <tag name="payum.action" factory="paycom_bac" alias="payum.action.authorize"/>
+        </service>
+        
+        <!-- ConvertPaymentAction-->
+        <!--<service id="AltF4\SyliusPaycomBacPlugin\Payum\Action\ConvertPaymentAction" public="true">
+            <tag name="payum.action" factory="paycom_bac" alias="payum.action.convert_payment"/>
+        </service>-->
+    </services>
+</container>

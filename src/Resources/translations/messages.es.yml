@@ -1,0 +1,8 @@
+altf4:
+    paycom_bac:
+        form:            
+            key_id: Key ID
+            merchant_id: Merchant ID
+            secret_key: Secret key
+            username: Username
+        gateway_label: Bac Credomatic
